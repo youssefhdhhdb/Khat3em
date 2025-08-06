@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مطعم ختعم - الصفحة الرئيسية</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      background-color: #ffdd00; /* لون قريب لهوية فول وطعمية */
+      color: #333;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+    header, footer {
+      background-color: #444;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+    }
+    nav a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    section {
+      padding: 2rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .social-icons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-icons a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: #25D366;
+    }
+    .slide-container {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 300%;
+    }
+    .slide {
+      width: 100vw;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>مطعم ختعم</h1>
+    <p>أحلى فول وطعمية في مصر</p>
+  </header>  <nav>
+    <a href="#" onclick="goToSlide(0)">عن ختعم</a>
+    <a href="#" onclick="goToSlide(1)">المنيو</a>
+    <a href="#" onclick="goToSlide(2)">الفروع</a>
+  </nav>  <div class="slide-container" id="slides">
+    <!-- الصفحة الأولى -->
+    <section class="slide">
+      <h2>من نحن</h2>
+      <p>مطعم ختعم هو من أشهر مطاعم الفول والطعمية في مصر، يقدم وجبات سريعة بأسعار شعبية وجودة عالية. لدينا فروع متعددة في طنطا، كفر الزيات، قطور، الحامول، شبين الكوم، كفر الشيخ والمزيد.</p>
+      <p>هدفنا: نوصلك الطعم الأصيل في كل لقمة.</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/khat3am.eg" target="_blank">📘</a>
+        <a href="https://www.instagram.com/khat3am.eg" target="_blank">📸</a>
+        <a href="https://wa.me/201080730915" target="_blank">💬</a>
+      </div>
+    </section><!-- الصفحة الثانية -->
+<section class="slide">
+  <h2>المنيو</h2>
+  <ul>
+    <li>ساندويتش فول - 7 جنيه</li>
+    <li>ساندويتش طعمية - 6 جنيه</li>
+    <li>ساندويتش بطاطس - 8 جنيه</li>
+    <li>طبق فول مخصوص - 15 جنيه</li>
+    <li>طعمية بالبيض - 10 جنيه</li>
+    <li>كبدة اسكندراني - 18 جنيه</li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/khat3am.eg" target="_blank">📘</a>
+    <a href="https://www.instagram.com/khat3am.eg" target="_blank">📸</a>
+    <a href="https://wa.me/201080730915" target="_blank">💬</a>
+  </div>
+</section>
+
+<!-- الصفحة الثالثة -->
+<section class="slide">
+  <h2>أرقام الفروع</h2>
+  <ul>
+    <li>طنطا: 01080730915</li>
+    <li>كفر الزيات: 01003437500</li>
+    <li>قطور: 01020301843</li>
+    <li>شبين الكوم: 01021343500</li>
+    <li>كفر الشيخ: 01098890001</li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/khat3am.eg" target="_blank">📘</a>
+    <a href="https://www.instagram.com/khat3am.eg" target="_blank">📸</a>
+    <a href="https://wa.me/201080730915" target="_blank">💬</a>
+  </div>
+</section>
+
+  </div>  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2025 لمطعم ختعم</p>
+  </footer>  <script>
+    let currentSlide = 0;
+    const container = document.getElementById('slides');
+
+    function goToSlide(index) {
+      currentSlide = index;
+      container.style.transform = `translateX(-${index * 100}vw)`;
+    }
+
+    let startX = 0;
+    container.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    container.addEventListener('touchend', e => {
+      let endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50 && currentSlide < 2) goToSlide(currentSlide + 1);
+      if (endX - startX > 50 && currentSlide > 0) goToSlide(currentSlide - 1);
+    });
+  </script></body>
+  </html>
